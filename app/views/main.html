@@ -16,8 +16,9 @@
 		</div>
 		<div class="barter-for">for</div>
 		<div class="barter-fish">
-			<span ng-model="barterPriceFish" class="barter-fish-lbs amount">125</span>
-			<div class="barter-fish-text">Fish (lbs)</div>
+			<!-- <input ng-model="barterPriceFish" class="barter-fish-lbs amount" id="spinner" name="value" /> -->
+			<input class="barter-fish-lbs amount"  type="number" ng-pattern="/\d+/" step="1" min="0" max="125" ng-model="barterPriceFish" required >
+			<span class="barter-fish-text">Fish (lbs)</span>
 		</div>
 	</div>
 	<div class="trade">
@@ -54,7 +55,7 @@
 		</div>
 
 		<div class="slider-container">
-			<span class="slider-label">Fish (lbs)<br /> to Friday</span>
+			<span class="slider-label">Fish (cals)<br /> to Friday</span>
 
 			<div class="param-slider" ui-slider="{'min':0,'max':100, 'step':1}" ng-model="initialWood">
 				<span class="minimum">0</span>
@@ -69,9 +70,17 @@
 <div class="display">
 	<div class="graphs">
 		<div class="graph-container graph-you">
+			<span class="graph-label">You</span>
+			<span class="yaxis-label rotate-90">Fish (cals)</span>
 			<linechart data="data" options="options"></linechart>
+			<span class="xaxis-label">Wood (lbs)</span>
 		</div>
-		<div class="graph-container graph-friday"></div>
+		<div class="graph-container graph-friday">
+			<span class="graph-label">Friday</span>
+			<span class="yaxis-label rotate-90">Fish (cals)</span>
+			<linechart data="data" options="options"></linechart>
+			<span class="xaxis-label">Fish (lbs)</span>
+		</div>
 	</div>
 	<div class="dialouge"></div>
 
