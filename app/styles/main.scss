@@ -21,27 +21,31 @@ body {
     margin: 0 auto;
     width: 1000px;
 }
-
-.param-slider {
-    margin-left: 10px;
-    width: 145px;
-}
 .controls {
-    float: left;
     border-right: 1px solid black;
+    float: left;
     width: 359px;
+    h3 {
+        font-size: 30px;
+        line-height: 34px;
+    }
+    .amount {
+        font-weight: bold;
+        font-size: 26px;
+    }
+    .question {
+        font-size: 18px;
+    }
 }
 .production, .barter, .trade, .consumption {
-    padding: 10px;
     @include pie-clearfix;
+    padding: 10px;
 }
 .production, .barter, .trade {
     border-bottom: 1px solid black;
 }
-.production {
-    h3 {
-        color: $blue;
-    }
+.production h3, .production .amount {
+    color: $blue;
 }
 .production-text {
     display: block;
@@ -50,47 +54,76 @@ body {
     width: 50%;
 }
 .production-lbs {
-    color: $blue;
-    font-weight: bold;
-    font-size: 26px;
-    padding: 5px;
+    position: relative;
+    top: 2px;
+    left: 5px;
 }
-.barter {
-    h3 {
-        color: $green;
-    }
+
+.barter h3, .barter .amount {
+    color: $green;
 }
 .barter-wood, .barter-for, .barter-fish {
-    width: 20%;
     float: left;
     text-align: center;
 }
+.barter-wood, .barter-fish {
+    width: 100px;
+}
 .barter-wood-lbs, .barter-fish-lbs {
     color: $green;
-    font-size: 26px;
-    font-weight: bold;
+    display: block;
 }
-.trade {
-    h3 {
-        color: $purple;
-    }
+
+.trade  h3, .trade .amount {
+    color: $purple;
 }
-.consumption {
-    h3 {
-        color: $red;
-    }
+
+.consumption h3, .consumption .amount{
+    color: $red;
+}
+
+.slider-container {
+    @include pie-clearfix;
+    margin-bottom: 30px;
 }
 .slider-label {
     display: block;
-    width: 100px;
+    float: left;
+    margin-right: 5px;
+    width: 80px;
+}
+.param-slider {
+    display: block;
+    float: left;
+    margin: 10px;
+    width: 180px;
+    position: relative;
+    .minimum, .maximum {
+        bottom: -25px;
+        position: absolute;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .minimum {
+        left: 0;
+    }
+    .maximum {
+        right: 0;
+    }
+}
+.slider-amount {
+    display: block;
+    float: left;
+    margin-top: 5px;
+    width: 40px;
 }
 .display {
     float: left;
     width: 640px;
 }
 .graphs {
-    width: 620px;
     @include pie-clearfix;
+    width: 620px;
     padding: 10px;
     border-bottom: 1px solid black;
 }
@@ -102,7 +135,4 @@ body {
 }
 .graph-you {
     margin-right: 20px;
-}
-.dialouge {
-
 }
