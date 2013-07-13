@@ -3,7 +3,12 @@
 angular.module('econv4protoApp')
   .controller('MainCtrl', function ($scope) {
     $scope.initialWood = 5;
+    $scope.studentProductionWood = 48;
+    $scope.studentProductionFish = 0;
+    $scope.barterPriceWood = 1;
     $scope.barterPriceFish = 125;
+    $scope.minStudentTradeWood = 0;
+    $scope.maxStudentTradeWood = 288;
 
 
 

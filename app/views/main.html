@@ -2,8 +2,8 @@
 	<div class="production">
 		<h3>Production</h3>
 		
-		<span class="production-text">Wood(lbs):<span class="production-lbs production-amount" ng-model="productionWood">48</span></span>
-		<span class="production-text">Fish(.lbs):<span class="production-lbs production-amount" ng-model="productionFish">0</span></span>
+		<span class="production-text">Wood(lbs):<span class="production-lbs production-amount">{{studentProductionWood}}</span></span>
+		<span class="production-text">Fish(.lbs):<span class="production-lbs production-amount">{{studentProductionFish}}</span></span>
 	</div>
 
 	<div class="barter">
@@ -11,57 +11,56 @@
 		<p class="question">What are the rules for trading?<p>
 
 		<div class="barter-wood">
-			<span ng-model="barterPriceWood" class="barter-wood-lbs barter-amount">1</span>
+			<span class="barter-wood-lbs barter-amount">{{barterPriceWood}}</span>
 			<span class="barter-wood-text">Wood (lbs)</span>
 		</div>
 		<div class="barter-for">for</div>
 		<div class="barter-fish">
-			<input class="barter-fish-lbs barter-amount" type="number" ng-pattern="/\d+/" step="1" min="0" max="125" ng-model="barterPriceFish" required >
+			<input class="barter-fish-lbs barter-amount" type="number" ng-pattern="/\d+/" step="1" min="0" max="125" ng-model="barterPriceFish" value="{{barterPriceFish}}" required >
 			<span class="barter-fish-text">Fish (lbs)</span>
 		</div>
 	</div>
 	<div class="trade">
 		<h3>Trade</h3>
 		<p class="question">How much do we trade?</p>
-		
 		<div class="slider-container">
 			<span class="slider-label">Wood (lbs)<br /> to Friday</span>
-
+			<!-- TODO make slider container because cant have markup inside slider -->
 			<div class="param-slider" ui-slider="{'min':0,'max':100, 'step':1}" ng-model="initialWood">
-				<span class="minimum">0</span>
-				<span class="maximum">288</span>
+				<span class="minimum">{{minStudentTradeWood}}</span>
+				<span class="maximum">{{maxStudentTradeWood}}</span>
 			</div>
 
-			<span class="slider-amount trade-amount" ng-model="tradeWoodToFriday">15</span>
+			<span class="slider-amount trade-amount" ng-model="woodTradedToFriday">15</span>
 		</div>
 
-		<span class="slider-label">Fish (lbs)<br /> from Friday</span>
-		<span class="trade-amount" ng-model="tradeFishToFriday">1875</span>
+		<span class="slider-label">Fish (cals)<br /> from Friday</span>
+		<span class="trade-amount" ng-model="fishTradedFromFriday">1875</span>
 	</div>
 	<div class="consumption">
 		<h3>Consumption</h3>
 		<p class="question">How many supplies do I end up with?</p>
 
 		<div class="slider-container">
-			<span class="slider-label">Wood (lbs)<br /> to Friday</span>
+			<span class="slider-label">Wood (lbs)</span>
 
 			<div class="param-slider" ui-slider="{'min':0,'max':100, 'step':1}" ng-model="initialWood">
-				<span class="minimum">19.2</span>
-				<span class="maximum">48</span>
+				<span class="minimum" ng-model="minStudentConsumptionWood">19.2</span>
+				<span class="maximum" ng-model="maxStudentConsumptionWood">48</span>
 			</div>
 
-			<span class="slider-amount consumption-amount" ng-model="consumptionWood">33</span>
+			<span class="slider-amount consumption-amount" ng-model="studentConsumptionWood">33</span>
 		</div>
 
 		<div class="slider-container">
-			<span class="slider-label">Fish (cals)<br /> to Friday</span>
+			<span class="slider-label">Fish (cals)</span>
 
 			<div class="param-slider" ui-slider="{'min':0,'max':100, 'step':1}" ng-model="initialWood">
-				<span class="minimum">0</span>
-				<span class="maximum">3600</span>
+				<span class="minimum" ng-model="minStudentConsumptionFish">0</span>
+				<span class="maximum" ng-model="minStudentConsumptionFish">3600</span>
 			</div>
 
-			<span class="slider-amount consumption-amount" ng-model="consumptionFish">1875</span>
+			<span class="slider-amount consumption-amount" ng-model="studentConsumptionFish">1875</span>
 		</div>
 
 	</div>
