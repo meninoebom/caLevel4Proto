@@ -1,5 +1,9 @@
 @import "bootstrap-sass/lib/bootstrap";
 @import "compass/utilities";
+@mixin amount {
+    font-weight: bold;
+    font-size: 18px;
+}
 
 $blue: #3bbfce;
 $green: #479917;
@@ -29,10 +33,6 @@ body {
         font-size: 30px;
         line-height: 34px;
     }
-    .amount {
-        font-weight: bold;
-        font-size: 20px;
-    }
     .question {
         font-size: 18px;
     }
@@ -44,8 +44,11 @@ body {
 .production, .barter, .trade {
     border-bottom: 1px solid black;
 }
-.production h3, .production .amount {
+.production h3, .production-amount {
     color: $blue;
+}
+.production-amount {
+    @include amount;
 }
 .production-text {
     display: block;
@@ -59,8 +62,11 @@ body {
     left: 5px;
 }
 
-.barter h3, .barter .amount {
+.barter h3, .barter-amount {
     color: $green;
+}
+.barter-amount {
+    @include amount;
 }
 .barter-wood, .barter-for, .barter-fish {
     float: left;
@@ -78,6 +84,9 @@ body {
     color: $green;
     display: block;
 }
+.barter-fish input {
+    color: $green;
+}
 .barter-wood-text {    
     position: relative;
     top: 5px;
@@ -91,14 +100,18 @@ body {
     position: relative;
     top: -15px;
 }
-.trade  h3, .trade .amount {
+.trade  h3, .trade-amount {
     color: $purple;
 }
-
-.consumption h3, .consumption .amount{
+.trade-amount {
+    @include amount;
+}
+.consumption h3, .consumption-amount{
     color: $red;
 }
-
+.consumption-amount {
+    @include amount;
+}
 .slider-container {
     @include pie-clearfix;
     margin-bottom: 30px;
@@ -141,7 +154,7 @@ body {
 .graphs {
     @include pie-clearfix;
     width: 605px;
-    padding: 15px 15px 50px;
+    padding: 15px 17px 50px;
     border-bottom: 1px solid black;
 }
 .graph-label {
@@ -184,4 +197,19 @@ body {
     -o-transform: rotate(-90deg);
     /* Internet Explorer */
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.dialouge {
+    width: 560px;
+    height: 273px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 40px;
+    font-size: 14px;
+    p {
+        padding-left: 10px;
+    }
+}
+.speaker-label {
+    font-weight: bold;
+    margin-top: 20px;
 }

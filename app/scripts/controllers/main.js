@@ -3,12 +3,9 @@
 angular.module('econv4protoApp')
   .controller('MainCtrl', function ($scope) {
     $scope.initialWood = 5;
+    $scope.barterPriceFish = 125;
 
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
 
 	$scope.data = [
 	  {x: 0, value: 4, otherValue: 14},
@@ -24,8 +21,8 @@ angular.module('econv4protoApp')
 	    x: {type: 'linear', tooltipFormatter: function(x) {return x;}}
 	  },
 	  series: [
-	    {y: 'value', color: 'blue', label: 'Production (lbs)'},
-	    {y: 'otherValue', color: 'red', label: 'Consumption (lbs)'}
+	    {y: 'value', color: '#3bbfce', label: 'Production (lbs)'},
+	    {y: 'otherValue', color: '#CF2917', label: 'Consumption (lbs)'}
 	  ],
 	  //lineMode: 'linear'
 	}
