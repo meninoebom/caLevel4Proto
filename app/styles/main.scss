@@ -122,25 +122,26 @@ body {
     margin-right: 5px;
     width: 80px;
 }
-.param-slider {
+.param-slider-wrapper {
+    position: relative;
     display: block;
     float: left;
     margin: 10px;
     width: 180px;
-    position: relative;
-    .minimum, .maximum {
+    .min, .max {
         bottom: -25px;
         position: absolute;
         font-size: 12px;
         font-weight: bold;
     }
-    .minimum {
-        left: 0;
+    .min {
+        left: 0px;
     }
-    .maximum {
-        right: 0;
+    .max {
+        right: 0px;
     }
 }
+
 .slider-amount {
     display: block;
     float: left;
