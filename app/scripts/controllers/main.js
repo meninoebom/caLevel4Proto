@@ -16,7 +16,7 @@ angular.module('econv4protoApp')
     }
 
     $scope.minStudentTradeWood = 0; //minstw
-    $scope.maxStudentTradeWood = 48; //maxstw
+    $scope.maxStudentTradeWood = 28.8; //maxstw
 
     $scope.fishTradedToFriday = 90; //ftf
     $scope.fishTradedFromFriday = 1875; //fff
@@ -31,7 +31,7 @@ angular.module('econv4protoApp')
     // }
     $scope.studentConsumptionFish = $scope.fishTradedFromFriday;
 
-    $scope.minStudentConsumptionWood = 0; //minscw
+    $scope.minStudentConsumptionWood = 19.2; //minscw
     $scope.maxStudentConsumptionWood = 48; //maxscw
     $scope.minStudentConsumptionFish = 0; //minscf
     $scope.maxStudentConsumptionFish = 3600; //maxscf
@@ -61,13 +61,31 @@ angular.module('econv4protoApp')
 	  //lineMode: 'linear'
 	}
 
-	$scope.$watch('woodTradedToFriday', function(newVal, oldVal){
-		$scope.studentConsumptionWood = $scope.maxStudentConsumptionWood - $scope.woodTradedToFriday;
-		if($scope.woodTradedToFriday * $scope.barterPriceFish <= $scope.maxStudentConsumptionFish) {
+	$scope.$watch('woodTradedToFriday', function(newWoodTradedToFirday) {
+		$scope.studentConsumptionWood = $scope.maxStudentConsumptionWood - newWoodTradedToFirday;
+		if(newWoodTradedToFirday * $scope.barterPriceFish <= $scope.maxStudentConsumptionFish) {
+			$scope.studentConsumptionFish = newWoodTradedToFirday * $scope.barterPriceFish;
+		} else {
+			$scope.studentConsumptionFish = $scope.maxStudentConsumptionFish;			
+		}
+	});
+
+	$scope.$watch('studentConsumptionWood', function(newStudentConsumptionWood) {
+		var newWoodTradedToFriday = $scope.maxStudentConsumptionWood - newStudentConsumptionWood;
+		if(newWoodTradedToFriday * $scope.barterPriceFish <= $scope.maxStudentConsumptionFish) {
 			$scope.studentConsumptionFish = $scope.woodTradedToFriday * $scope.barterPriceFish;
 		} else {
 			$scope.studentConsumptionFish = 3600;			
 		}
+		$scope.woodTradedToFriday = newWoodTradedToFriday;
 	});
+
+	$scope.$watch('studentConsumptionFish', function(newStudentConsumptionFish) {
+		$scope.woodTradedToFriday = $scope.formatValue(newStudentConsumptionFish/$scope.barterPriceFish);
+	});
+
+	$scope.formatValue = function(value) {
+		return Math.round(value*10)/10;
+	}
     
   });

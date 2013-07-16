@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('econv4protoApp', ['ui','n3-charts.linechart'])
+angular.module('econv4protoApp', ['ui','n3-charts.linechart','ui.slider'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
