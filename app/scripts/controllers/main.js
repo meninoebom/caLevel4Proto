@@ -11,9 +11,7 @@ angular.module('econv4protoApp')
     
     $scope.barterPriceWood = 1;
     $scope.barterPriceFish = 125;     
-    $scope.barterPrice = function() {
-    	return $scope.barterPriceWood/$scope.barterPriceFish; //bp
-    }
+    $scope.barterPrice = $scope.barterPriceWood/$scope.barterPriceFish; //bp
 
     $scope.minStudentTradeWood = 0; //minstw
     $scope.maxStudentTradeWood = 28.8; //maxstw
@@ -36,56 +34,102 @@ angular.module('econv4protoApp')
     $scope.minStudentConsumptionFish = 0; //minscf
     $scope.maxStudentConsumptionFish = 3600; //maxscf
 
-    $scope.traderConsumptionWood = $scope.woodTradedToFriday; //tcw
-    $scope.traderConsumptionFish = function() {
-    	return 3600 - $scope.fishTradedFromFriday; //tcf
-    }
+    // $scope.traderConsumptionWood = $scope.woodTradedToFriday; //tcw
+    // $scope.traderConsumptionFish =  $scope.woodTradedFromFriday; //tcf
 
-	$scope.data = [
-	  {x: 0, value: 4, otherValue: 14},
-	  {x: 1, value: 8, otherValue: 1},
-	  {x: 2, value: 15, otherValue: 11},
-	  {x: 3, value: 16, otherValue: 147},
-	  {x: 4, value: 23, otherValue: 87},
-	  {x: 5, value: 42, otherValue: 45}
-	]; 
-
-	$scope.options = {
+    $scope.graphOptions = {
 	  axes: {
 	    x: {type: 'linear', tooltipFormatter: function(x) {return x;}}
 	  },
 	  series: [
-	    {y: 'value', color: '#3bbfce', label: 'Production (lbs)'},
-	    {y: 'otherValue', color: '#CF2917', label: 'Consumption (lbs)'}
+	    {y: 'production', color: '#3bbfce', label: 'Production (lbs)'},
+	    {y: 'consumption', color: '#CF2917', label: 'Consumption (lbs)'}
 	  ],
 	  //lineMode: 'linear'
 	}
 
-	$scope.$watch('woodTradedToFriday', function(newWoodTradedToFirday) {
-		$scope.studentConsumptionWood = $scope.maxStudentConsumptionWood - newWoodTradedToFirday;
-		if(newWoodTradedToFirday * $scope.barterPriceFish <= $scope.maxStudentConsumptionFish) {
-			$scope.studentConsumptionFish = newWoodTradedToFirday * $scope.barterPriceFish;
+	$scope.studentGraphData = [
+	  {x: 0, production: 2400, consumption: 3600},
+	  {x: 48, production: 0, consumption: 0}
+	]; 
+
+	$scope.fridayGraphData = [
+	  {x: 0, production: 3600, consumption: 3600},
+	  {x: 28.8, production: 0, consumption: 805},
+	  {x: 36, production: 0, consumption: 0}
+	]; 
+
+	// $scope.initGraphs = function() {
+	//     $scope.studentGraphData = [];
+	//     $scope.studentGraphData.push('x');
+	// 	$scope.studentGraphData[0].x = 0;
+	//     $scope.studentGraphData.push('x');
+	// 	$scope.studentGraphData[1].x = 48;
+	// 	$scope.studentGraphData[0].production = 2400;
+	// 	$scope.studentGraphData[1].production = 0;
+	// 	$scope.studentGraphData[0].consumption = 2400;
+	// 	$scope.studentGraphData[1].consumption = 0;
+	// 	//$scope.fridayGraphData[0].x = 0;
+	// 	//$scope.fridayGraphData[1].x = $scope.maxStudentTradeWood;
+	// }
+	// $scope.initGraphs();
+
+	// $scope.updateGraphs = function(value) {
+	// 	for (var i = 0; i < $scope.studentGraphData.length; i++) {
+	// 	    console.log($scope.studentGraphData[i]);
+	// 	}
+	// 	$scope.fridayGraphData[1].x = $scope.maxStudentTradeWood;
+	// }
+
+
+
+	$scope.$watch('barterPriceFish', function(newBarterPriceFish) {
+		$scope.barterPrice = $scope.barterPriceWood/newBarterPriceFish;
+		
+		var newMaxStudentTradeWood = $scope.formatValue($scope.maxStudentConsumptionFish/newBarterPriceFish);
+		if(newMaxStudentTradeWood >= $scope.studentProductionWood ){
+			$scope.maxStudentTradeWood = $scope.studentProductionWood;
 		} else {
-			$scope.studentConsumptionFish = $scope.maxStudentConsumptionFish;			
+			$scope.maxStudentTradeWood = newMaxStudentTradeWood;
+		} 
+
+		var newMinStudentConsumptionWood = $scope.formatValue($scope.studentProductionWood - $scope.maxStudentConsumptionFish/newBarterPriceFish);
+		if($scope.studentProductionWood*newBarterPriceFish <= $scope.maxStudentConsumptionFish ){
+			$scope.minStudentConsumptionWood = 0;
+		} else {
+			$scope.minStudentConsumptionWood = newMinStudentConsumptionWood;
+		} 
+	});
+
+	$scope.$watch('woodTradedToFriday', function(newWoodTradedToFriday) {
+		$scope.studentConsumptionWood = $scope.maxStudentConsumptionWood - newWoodTradedToFriday;
+		if(newWoodTradedToFriday * $scope.barterPriceFish <= $scope.maxStudentConsumptionFish) {
+			$scope.studentConsumptionFish = $scope.formatValue(newWoodTradedToFriday * $scope.barterPriceFish);
+		} else {
+			$scope.studentConsumptionFish = $scope.formatValue($scope.maxStudentConsumptionFish);			
 		}
+		//$scope.updateGraphs();
 	});
 
 	$scope.$watch('studentConsumptionWood', function(newStudentConsumptionWood) {
 		var newWoodTradedToFriday = $scope.maxStudentConsumptionWood - newStudentConsumptionWood;
 		if(newWoodTradedToFriday * $scope.barterPriceFish <= $scope.maxStudentConsumptionFish) {
-			$scope.studentConsumptionFish = $scope.woodTradedToFriday * $scope.barterPriceFish;
+			$scope.studentConsumptionFish = $scope.formatValue($scope.woodTradedToFriday * $scope.barterPriceFish);
 		} else {
-			$scope.studentConsumptionFish = 3600;			
+			$scope.studentConsumptionFish = $scope.formatValue($scope.maxStudentConsumptionFish);			
 		}
-		$scope.woodTradedToFriday = newWoodTradedToFriday;
+		$scope.woodTradedToFriday = $scope.formatValue(newWoodTradedToFriday);
+		//$scope.updateGraphs();
 	});
 
 	$scope.$watch('studentConsumptionFish', function(newStudentConsumptionFish) {
 		$scope.woodTradedToFriday = $scope.formatValue(newStudentConsumptionFish/$scope.barterPriceFish);
+		//$scope.updateGraphs();
 	});
 
 	$scope.formatValue = function(value) {
 		return Math.round(value*10)/10;
 	}
-    
+
+
   });
