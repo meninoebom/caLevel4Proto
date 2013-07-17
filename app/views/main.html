@@ -30,7 +30,7 @@
 			<!-- TODO make slider container because cant have markup inside slider -->
 			<div class="param-slider-wrapper">
 				<span class="max">{{maxStudentTradeWood}}</span>
-				<div ui-slider min="{{minStudentTradeWood}}" max="{{maxStudentTradeWood}}" step="1" ng-disabled="disabled" ng-model="woodTradedToFriday"></div>
+				<div ui-slider min="{{minStudentTradeWood}}" max="{{maxStudentTradeWood}}" step=".1" ng-disabled="disabled" ng-model="woodTradedToFriday"></div>
 				<span class="min">{{minStudentTradeWood}}</span>
 			</div>
 			<span class="slider-amount trade-amount" ng-model="woodTradedToFriday">{{woodTradedToFriday}}</span>
@@ -49,7 +49,7 @@
 
 			<div class="param-slider-wrapper">
 				<span class="min">{{minStudentConsumptionWood}}</span>
-				<div ui-slider min="{{minStudentConsumptionWood}}" max="{{maxStudentConsumptionWood}}" step="1" ng-disabled="disabled" ng-model="studentConsumptionWood"></div>
+				<div ui-slider min="{{minStudentConsumptionWood}}" max="{{maxStudentConsumptionWood}}" step=".1" ng-disabled="disabled" ng-model="studentConsumptionWood"></div>
 				<span class="max">{{maxStudentConsumptionWood}}</span>
 			</div>
 
@@ -60,7 +60,7 @@
 			<span class="slider-label">Fish (cals)</span>
 				<div class="param-slider-wrapper">
 					<span class="min">{{minStudentConsumptionFish}}</span>
-					<div ui-slider min="{{minStudentConsumptionFish}}" max="{{maxStudentConsumptionFish}}" step="1" ng-disabled="disabled" ng-model="studentConsumptionFish"></div>
+					<div ui-slider min="{{minStudentConsumptionFish}}" max="{{maxStudentConsumptionFish}}" step=".1" ng-disabled="disabled" ng-model="studentConsumptionFish"></div>
 					<span class="max">{{maxStudentConsumptionFish}}</span>
 				</div>
 			<span class="slider-amount consumption-amount">{{studentConsumptionFish}}</span>
