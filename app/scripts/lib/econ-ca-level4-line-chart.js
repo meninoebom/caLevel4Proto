@@ -198,7 +198,7 @@ angular.module('n3-charts.linechart', [])
     drawLines: function(svg, scales, data, interpolateMode) {
       var drawers = {
         y: this.createLeftLineDrawer(scales, interpolateMode),
-        y2: this.createRightLineDrawer(scales, interpolateMode)
+        //y2: this.createRightLineDrawer(scales, interpolateMode)
       };
 
       svg.select('.content').selectAll('.lineGroup')
@@ -583,8 +583,10 @@ angular.module('n3-charts.linechart', [])
           axis: s.axis || 'y',
           type: s.type || 'line'
         };
-
-        data.forEach(function(row) {
+        
+        console.log(data.lineValues);
+        //data.lineData.forEach(function(row) {
+        data[0].lineValues.forEach(function(row) {
           seriesData.values.push({
             x: row.x,
             value: row[s.y],
@@ -594,7 +596,6 @@ angular.module('n3-charts.linechart', [])
 
         lineData.push(seriesData);
       });
-
       return lineData;
     },
 

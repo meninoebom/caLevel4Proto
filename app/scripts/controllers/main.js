@@ -43,24 +43,39 @@ angular.module('econv4protoApp')
 	  //lineMode: 'linear'
 	}
 
-	$scope.studentGraphData = [
-	  {x: 0, production: 2400, consumption: 3600},
-	  {x: 48, production: 0, consumption: 0}
-	]; 
+	// $scope.studentGraphData = [
+	//   {x: 0, production: 2400, consumption: 3600},
+	//   {x: 48, production: 0, consumption: 0}
+	// ]; 
 
-	$scope.fridayGraphData = [
-	  {x: 0, production: 3600, consumption: 3600},
-	  {x: 15, production: 0, consumption: 1775}//,
-	  //{x: 28.8, production: 0, consumption: 0},
-	  // {x: 36, production: 0, consumption: 0}
-	]; 
+	// $scope.fridayGraphData = [
+	//   {x: 0, production: 3600, consumption: 3600},
+	//   {x: 15, production: 0, consumption: 1775}//,
+	//   //{x: 28.8, production: 0, consumption: 0},
+	//   // {x: 36, production: 0, consumption: 0}
+	// ]; 
+
+	$scope.studentGraphData = {
+		pointValues: {x: 100, y:100},
+		lineValues: [
+			{x: 0, production: 2400, consumption: 3600},
+			{x: 48, production: 0, consumption: 0}
+		]
+	}; 
+
+	// $scope.fridayGraphData = {
+	// 	pointValues: {x: 100, y:100},
+	// 	lineValues: [
+	// 		{x: 0, production: 3600, consumption: 3600},
+	// 		{x: 15, production: 0, consumption: 1775}
+	// 	]
+	// }; 
 
 	$scope.updateGraphs = function() {
 		$scope.updateStudentGraph();
-		$scope.updateFridayGraph();
+		//$scope.updateFridayGraph();
 	}
 	$scope.updateStudentGraph = function() {
-		console.log("updateStudentGraph");
 		var barterPrice = $scope.barterPriceFish;
 		//had to add true (!0) as param to watch call back in link-chart.min.js: d.$watch("data",d.update,!0)
 		$scope.studentGraphData[0].consumption = barterPrice*28.8;
