@@ -39,17 +39,17 @@ angular.module('n3-charts.linechart', [])
     },
 
     getWidestOrdinate: function(data, series) {
-      var widest = '';
+      //var widest = '';
 
-      data.forEach(function(row) {
-        series.forEach(function(series) {
-          if (('' + row[series.y]).length > ('' + widest).length) {
-            widest = row[series.y];
-          }
-        });
-      });
+      // data.forEach(function(row) {
+      //   series.forEach(function(series) {
+      //     if (('' + row[series.y]).length > ('' + widest).length) {
+      //       widest = row[series.y];
+      //     }
+      //   });
+      // });
 
-      return widest;
+      return 100;
     },
 
     createAxes: function(svg, dimensions, axesOptions) {
@@ -388,21 +388,21 @@ angular.module('n3-charts.linechart', [])
             return 'dotGroup ' + 'series_' + s.index;
           })
           .attr('fill', function(s) {return s.color;})
-          .on('mouseover', function(series) {
-            var target = d3.select(d3.event.target);
-            target.attr('r', 4);
+          // .on('mouseover', function(series) {
+          //   var target = d3.select(d3.event.target);
+          //   target.attr('r', 4);
 
-            that.onMouseOver(svg, {
-              series: series,
-              x: target.attr('cx'),
-              y: target.attr('cy'),
-              datum: target.datum()
-            });
-          })
-          .on('mouseout', function(d) {
-            d3.select(d3.event.target).attr('r', 2);
-            that.onMouseOut(svg);
-          })
+          //   that.onMouseOver(svg, {
+          //     series: series,
+          //     x: target.attr('cx'),
+          //     y: target.attr('cy'),
+          //     datum: target.datum()
+          //   });
+          // })
+          // .on('mouseout', function(d) {
+          //   d3.select(d3.event.target).attr('r', 2);
+          //   that.onMouseOut(svg);
+          // })
           .selectAll('.dot').data(function(d) {return d.values;})
             .enter().append('circle')
             .attr({
@@ -934,7 +934,7 @@ angular.module('n3-charts.linechart', [])
 
     $window.addEventListener('resize', window_resize);
 
-    scope.$watch('data', scope.update);
+    scope.$watch('data', scope.update, true);
     scope.$watch('options', scope.update, true);
   };
 

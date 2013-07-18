@@ -50,8 +50,8 @@ angular.module('econv4protoApp')
 
 	$scope.fridayGraphData = [
 	  {x: 0, production: 3600, consumption: 3600},
-	  {x: 15, production: 0, consumption: 1775},
-	  {x: 28.8, production: 0, consumption: 0},
+	  {x: 15, production: 0, consumption: 1775}//,
+	  //{x: 28.8, production: 0, consumption: 0},
 	  // {x: 36, production: 0, consumption: 0}
 	]; 
 
@@ -60,6 +60,7 @@ angular.module('econv4protoApp')
 		$scope.updateFridayGraph();
 	}
 	$scope.updateStudentGraph = function() {
+		console.log("updateStudentGraph");
 		var barterPrice = $scope.barterPriceFish;
 		//had to add true (!0) as param to watch call back in link-chart.min.js: d.$watch("data",d.update,!0)
 		$scope.studentGraphData[0].consumption = barterPrice*28.8;

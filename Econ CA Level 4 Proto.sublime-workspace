@@ -1,0 +1,397 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"upd",
+				"updateStudentGraph"
+			],
+			[
+				"up",
+				"updateValues"
+			],
+			[
+				"ba",
+				"barterPriceFish"
+			],
+			[
+				"max",
+				"maxStudentConsumptionFish"
+			],
+			[
+				"bar",
+				"barterPrice"
+			],
+			[
+				"studentCon",
+				"studentConsumptionY"
+			],
+			[
+				"st",
+				"studentProductionWood"
+			],
+			[
+				"stud",
+				"studentProductionWood"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"for",
+				"formatValue"
+			],
+			[
+				"ma",
+				"maxStudentTradeWood"
+			],
+			[
+				"student",
+				"studentGraphData"
+			],
+			[
+				"woodT",
+				"woodTradedFromFriday"
+			],
+			[
+				"wood",
+				"woodTradedToFriday"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"f",
+				"font-style"
+			],
+			[
+				"barter",
+				"barter-wood"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"border-ri",
+				"border-right"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"H",
+				"H2	Tag"
+			],
+			[
+				"h",
+				"h2	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"lor",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"lore",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"html",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"scs",
+				"Set Syntax: CSS"
+			],
+			[
+				"htm",
+				"HTML: Wrap Selection With Tag"
+			]
+		],
+		"width": 145.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/lib/line-chart.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/index.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/controllers/main.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/views/main.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/lib/line-chart.min.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/app.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/directives/uiSlider.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/directives/uiSlider-bkup.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/styles/main.scss",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/views/slider.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/package.json",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/Gruntfile.js",
+		"/C/Users/Brandon Brown/env.bat",
+		"/C/Users/Brandon Brown/Projects/programming/econv4 - Copy/Gruntfile.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/Gruntfile.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/app/index.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4 - Copy/app/index.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4 - Copy/app/scripts/app.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/app/scripts/app.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4 - Copy/app/scripts/controllers/main.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/app/scripts/controllers/main.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4 - Copy/app/views/main.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/app/views/main.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4 - Copy/bower.json",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/bower.json",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/package.json",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/app/styles/main.scss",
+		"/C/Users/Brandon Brown/Projects/programming/econv4/app/scripts/directives/uiSlider.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/styles/main.css",
+		"/C/Users/Brandon Brown/Projects/programming/compasstest/Gruntfile.js",
+		"/C/Users/Brandon Brown/Projects/programming/compasstest/app/index.html",
+		"/C/Users/Brandon Brown/Projects/programming/compasstest/app/styles/scss/main.scss",
+		"/C/Users/Brandon Brown/Projects/programming/econproto/js/app.js",
+		"/C/Users/Brandon Brown/Projects/programming/econproto/js/controllers.js",
+		"/C/Users/Brandon Brown/Projects/programming/econproto/index.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/styles/scss/main.scss",
+		"/C/Users/Brandon Brown/Projects/programming/sasstest/Gruntfile.js",
+		"/C/Users/Brandon Brown/Projects/programming/econproto/js/directives.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/favicon.ico",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/node_modules/grunt-contrib-watch/test/fixtures/livereload/sass/one.scss",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/bower_components/angular-ui/build/angular-ui.js",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/bower_components/angular-ui/README.md",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/bower.json"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"C:\\Users\\Brandon Brown\\Projects\\programming\\econv4\\app"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"createAxes",
+			"height",
+			"update",
+			"filter",
+			"widest",
+			"consumption",
+			"Consumption",
+			"consumption",
+			"production",
+			"Production",
+			"production",
+			"StudentConsumptionFish",
+			"studentConsumptionFish",
+			"watch",
+			"newMaxStudentTradeWood",
+			"newVal",
+			" otherValue",
+			" value",
+			"value",
+			"newWoodTradedToFirday",
+			"ngModel",
+			"elm",
+			"minimum",
+			"maximum",
+			";\n",
+			" amount",
+			"span",
+			"wood",
+			"Wood",
+			"wood",
+			"Wood",
+			"wood",
+			"trade",
+			"<div></div>",
+			"lbs",
+			";\n",
+			"uiSlider",
+			"<div class=\"param-slider\" ui-slider=\"{'min':0,'max':100, 'step':1}\" ng-model=\"initialWood\"></div>",
+			"sliderLabel",
+			"<div class=\"param-slider\" ui-slider=\"{'min':0,'max':100, 'step':1}\" ng-model=\"initialWood\"></div>",
+			"h2",
+			"loadNpm",
+			"compass",
+			"'step':5",
+			"jquery"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.471798807355,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"index",
+				"econv4proto/app/index.html"
+			],
+			[
+				"uisl",
+				"econv4proto/app/scripts/directives/uiSlider.js"
+			],
+			[
+				"slide",
+				"econv4proto/app/scripts/directives/uiSlider.js"
+			],
+			[
+				"main.js",
+				"econv4proto/app/scripts/controllers/main.js"
+			],
+			[
+				"main.scss",
+				"node_modules/grunt-contrib-watch/test/fixtures/livereload/sass/one.scss"
+			],
+			[
+				"main.css",
+				"app/styles/main.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 229.0,
+	"status_bar_visible": true
+}
