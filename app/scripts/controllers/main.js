@@ -32,16 +32,16 @@ angular.module('econv4protoApp')
     $scope.minStudentConsumptionFish = 0; //minscf
     $scope.maxStudentConsumptionFish = 3600; //maxscf
 
-    $scope.graphOptions = {
-	  axes: {
-	    x: {type: 'linear', tooltipFormatter: function(x) {return x;}}
-	  },
-	  series: [
-	    {y: 'production', color: '#3bbfce', label: 'Production (lbs)'},
-	    {y: 'consumption', color: '#CF2917', label: 'Consumption (lbs)'}
-	  ],
-	  //lineMode: 'linear'
-	}
+ //    $scope.graphOptions = {
+	//   axes: {
+	//     x: {type: 'linear', tooltipFormatter: function(x) {return x;}}
+	//   },
+	//   series: [
+	//     {y: 'production', color: '#3bbfce', label: 'Production (lbs)'},
+	//     {y: 'consumption', color: '#CF2917', label: 'Consumption (lbs)'}
+	//   ],
+	//   lineMode: 'linear'
+	// }
 
 	// $scope.studentGraphData = [
 	//   {x: 0, production: 2400, consumption: 3600},
@@ -56,12 +56,33 @@ angular.module('econv4protoApp')
 	// ]; 
 
 	$scope.studentGraphData = {
-		pointValues: {x: 100, y:100},
-		lineValues: [
-			{x: 0, production: 2400, consumption: 3600},
-			{x: 48, production: 0, consumption: 0}
-		]
-	}; 
+		production: {
+			line: [[0, 2400][48,0]],
+			point: [48, 0],
+			color: '#3bbfce'
+		},
+		consumption: {
+			line: [[19.2, 3600][48,0]],
+			point: [38, 1875],
+			color: '#CF2917'
+		},
+	    minMaxX: [0, 50],
+   		minMaxY: [0, 4000]
+    }; 
+	$scope.fridayGraphData = {
+		production: {
+			line: [[0, 3600][36,0]],
+			point: [0, 3600],
+			color: '#3bbfce'
+		},
+		consumption: {
+			line: [[0, 3600][28.8,0]],
+			point: [15, 1775],
+			color: '#CF2917'
+		},
+	    minMaxX: [0, 50],
+   		minMaxY: [0, 4000]
+    }; 
 
 	// $scope.fridayGraphData = {
 	// 	pointValues: {x: 100, y:100},

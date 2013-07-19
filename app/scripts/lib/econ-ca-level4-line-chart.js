@@ -812,7 +812,9 @@ angular.module('n3-charts.linechart', [])
 
       return options;
     },
-
+    formatData: function(data) {
+      console.log(data);
+    },
     activateZoom: function(element, svg, axes, dimensions, columnWidth) {
       var y2Scale_old = axes.y2Scale;
       var y2Scale = y2Scale_old ? y2Scale_old.copy() : undefined;
@@ -872,56 +874,82 @@ angular.module('n3-charts.linechart', [])
 
 .directive('linechart', ['n3utils', '$window', '$timeout', function(n3utils, $window, $timeout) {
   var link  = function(scope, element, attrs, ctrl) {
-      var productionDataArray = [
-          [0, 2400],
-          [33, 750],
-          [48, 0]
-      ];
-      var consumptionDataArray = [
-          [19.2, 3600],
-          [33, 1875],
-          [48, 0]
-      ];
 
-      var productionData = productionDataArray.map(function (d) {
-          return {
-              xVal: d[0],
-              yVal: d[1]
-          };
-      });
+        var productionDataArray;
+        var consumptionDataArray;
+        var productionData;
+        var consumptionData;
+        var pointData;
+        var minMaxY;
+        var minMaxX;
 
-      var consumptionData = consumptionDataArray.map(function (d) {
-          return {
-              xVal: d[0],
-              yVal: d[1]
-          };
-      });
+      scope.setupData = function(blah) {
+        console.log("blah = "+blah);
+        productionDataArray = [
+            [0, 2400],
+            [33, 750],
+            [48, 0]
+        ];
+        consumptionDataArray = [
+            [19.2, 3600],
+            [33, 1875],
+            [48, 0]
+        ];
 
-      var pointData = [{
-          xVal: 48,
-          yVal: 0,
-          color: "blue"
-      }, {
-          xVal: 33,
-          yVal: 1875,
-          color: "red"
-      }];
+        productionData = productionDataArray.map(function (d) {
+            return {
+                xVal: d[0],
+                yVal: d[1]
+            };
+        });
 
-      var upperLowerYVals = [0, 4000];
-      var upperLowerXVals = [0, 50];
+        consumptionData = consumptionDataArray.map(function (d) {
+            return {
+                xVal: d[0],
+                yVal: d[1]
+            };
+        });
 
-      var margin = {
-          top: 20,
-          right: 20,
-          bottom: 30,
-          left: 50
-      },width = 480 - margin.left - margin.right,height = 250 - margin.top - margin.bottom;
+        pointData = [{
+            xVal: 48,
+            yVal: 0,
+            color: "blue"
+        }, {
+            xVal: 33,
+            yVal: 1875,
+            color: "red"
+        }];
+
+        minMaxY = [0, 4000];
+        minMaxX = [0, 50];
+      }
+
+      scope.setupData(scope.data);
+      var data = n3utils.formatData(scope.data);
+
+      // var margin = {
+      //     top: 20,
+      //     right: 20,
+      //     bottom: 30,
+      //     left: 50
+      // },
+      // width = 290 - margin.left - margin.right,
+      // height = 250 - margin.top - margin.bottom;
+
+      var margin = {top: 20, right: 20, bottom: 30, left: 50},width = element[0].parentElement.offsetWidth || 290,height = element[0].parentElement.offsetHeight || 250;
+      width = width - margin.left - margin.right;
+      height = height - margin.top - margin.bottom;
+
+      scope.redraw = function() {
+
+      }
+
 
       var xScale = d3.scale.linear()
-          .range([0, width]).domain(upperLowerXVals);
+          .range([0, width]).domain(minMaxX);
 
       var yScale = d3.scale.linear()
-          .range([height, 0]).domain(upperLowerYVals);
+          .range([height, 0]).domain(minMaxY);
 
       var xAxis = d3.svg.axis()
           .scale(xScale)
