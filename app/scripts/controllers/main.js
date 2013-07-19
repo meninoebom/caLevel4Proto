@@ -72,7 +72,7 @@ angular.module('econv4protoApp')
 	// }; 
 
 	$scope.updateGraphs = function() {
-		$scope.updateStudentGraph();
+		//$scope.updateStudentGraph();
 		//$scope.updateFridayGraph();
 	}
 	$scope.updateStudentGraph = function() {

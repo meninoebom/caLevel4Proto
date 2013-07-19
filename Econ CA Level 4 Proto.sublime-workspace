@@ -119,6 +119,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/scripts/lib/econ-ca-level4-line-chart.js",
+			"settings":
+			{
+				"buffer_size": 27445,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 5061,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/main.js",
+			"settings":
+			{
+				"buffer_size": 5034,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Brandon Brown/dev/angular-d3/app/index.html",
+			"settings":
+			{
+				"buffer_size": 3071,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -172,8 +204,9 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/lib/line-chart.js",
 		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/index.html",
+		"/C/Users/Brandon Brown/Projects/programming/econproto/index.html",
+		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/lib/line-chart.js",
 		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/controllers/main.js",
 		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/views/main.html",
 		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/scripts/lib/line-chart.min.js",
@@ -206,7 +239,6 @@
 		"/C/Users/Brandon Brown/Projects/programming/compasstest/app/styles/scss/main.scss",
 		"/C/Users/Brandon Brown/Projects/programming/econproto/js/app.js",
 		"/C/Users/Brandon Brown/Projects/programming/econproto/js/controllers.js",
-		"/C/Users/Brandon Brown/Projects/programming/econproto/index.html",
 		"/C/Users/Brandon Brown/Projects/programming/econv4proto/app/styles/scss/main.scss",
 		"/C/Users/Brandon Brown/Projects/programming/sasstest/Gruntfile.js",
 		"/C/Users/Brandon Brown/Projects/programming/econproto/js/directives.js",
@@ -233,6 +265,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Data",
+			"getData",
+			"consol",
+			"console",
+			"getDataPerSeries",
+			"console",
+			"drawLines",
+			"lineGroup",
+			"data",
+			"updateArea",
 			"createAxes",
 			"height",
 			"update",
@@ -295,13 +337,124 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/scripts/lib/econ-ca-level4-line-chart.js",
+					"settings":
+					{
+						"buffer_size": 27445,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17397,
+								17397
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 10198.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/main.html",
+					"settings":
+					{
+						"buffer_size": 5061,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2909,
+								2909
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1674.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 2,
+					"file": "app/scripts/controllers/main.js",
+					"settings":
+					{
+						"buffer_size": 5034,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1835,
+								1834
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 902.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Brandon Brown/dev/angular-d3/app/index.html",
+					"settings":
+					{
+						"buffer_size": 3071,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1767,
+								1767
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 702.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -311,7 +464,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"layout":
 	{
@@ -333,7 +486,7 @@
 		"cols":
 		[
 			0.0,
-			0.471798807355,
+			0.419161676647,
 			1.0
 		],
 		"rows":
@@ -354,6 +507,18 @@
 		"selected_items":
 		[
 			[
+				"main.js",
+				"econv4proto/app/scripts/controllers/main.js"
+			],
+			[
+				"main",
+				"econv4proto/app/views/main.html"
+			],
+			[
+				"in",
+				"econproto/index.html"
+			],
+			[
 				"index",
 				"econv4proto/app/index.html"
 			],
@@ -364,10 +529,6 @@
 			[
 				"slide",
 				"econv4proto/app/scripts/directives/uiSlider.js"
-			],
-			[
-				"main.js",
-				"econv4proto/app/scripts/controllers/main.js"
 			],
 			[
 				"main.scss",
@@ -388,10 +549,10 @@
 		],
 		"width": 0.0
 	},
-	"show_minimap": false,
+	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 229.0,
+	"side_bar_width": 205.0,
 	"status_bar_visible": true
 }

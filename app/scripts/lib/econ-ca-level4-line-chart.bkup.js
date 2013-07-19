@@ -5,8 +5,6 @@ angular.module('n3-charts.linechart', [])
 
 .factory('n3utils', function() {
   return {
-
-
     getDefaultMargins: function() {
       return {top: 20, right: 50, bottom: 60, left: 50};
     },
@@ -872,146 +870,73 @@ angular.module('n3-charts.linechart', [])
 
 .directive('linechart', ['n3utils', '$window', '$timeout', function(n3utils, $window, $timeout) {
   var link  = function(scope, element, attrs, ctrl) {
-      var productionDataArray = [
-          [0, 2400],
-          [33, 750],
-          [48, 0]
-      ];
-      var consumptionDataArray = [
-          [19.2, 3600],
-          [33, 1875],
-          [48, 0]
-      ];
+    var dim = n3utils.getDefaultMargins();
 
-      var productionData = productionDataArray.map(function (d) {
-          return {
-              xVal: d[0],
-              yVal: d[1]
-          };
-      });
+    scope.updateDimensions = function(dimensions) {
+      dimensions.width = element[0].parentElement.offsetWidth || 900;
+      dimensions.height = element[0].parentElement.offsetHeight || 500;
+    };
 
-      var consumptionData = consumptionDataArray.map(function (d) {
-          return {
-              xVal: d[0],
-              yVal: d[1]
-          };
-      });
+    scope.update = function() {
+      scope.updateDimensions(dim);
+      scope.redraw(dim);
+    };
 
-      var pointData = [{
-          xVal: 48,
-          yVal: 0,
-          color: "blue"
-      }, {
-          xVal: 33,
-          yVal: 1875,
-          color: "red"
-      }];
+    scope.redraw = function(dimensions) {
+      var options = n3utils.sanitizeOptions(scope.options);
+      var data = scope.data;
+      var series = options.series;
+      var dataPerSeries = n3utils.getDataPerSeries(data, options);
+      var isThumbnail = (attrs.mode === 'thumbnail');
 
-      var upperLowerYVals = [0, 4000];
-      var upperLowerXVals = [0, 50];
+      if (isThumbnail) {
+        n3utils.adjustMarginsForThumbnail(dimensions, options, data);
+      } else {
+        n3utils.adjustMargins(dimensions, options, data);
+      }
 
-      var margin = {
-          top: 20,
-          right: 20,
-          bottom: 30,
-          left: 50
-      },width = 480 - margin.left - margin.right,height = 250 - margin.top - margin.bottom;
+      n3utils.clean(element[0]);
 
-      var xScale = d3.scale.linear()
-          .range([0, width]).domain(upperLowerXVals);
+      var svg = n3utils.bootstrap(element[0], dimensions);
+      var axes = n3utils
+        .createAxes(svg, dimensions, options.axes)
+        .andAddThemIf(!isThumbnail);
 
-      var yScale = d3.scale.linear()
-          .range([height, 0]).domain(upperLowerYVals);
+      n3utils.createContent(svg);
+      n3utils.createClippingPath(svg, dimensions);
 
-      var xAxis = d3.svg.axis()
-          .scale(xScale)
-          .orient("bottom");
-      d3.select("axis path, axis line").attr("fill","none");
+      if (!isThumbnail) {
+        n3utils.drawLegend(svg, series, dimensions);
+      }
 
-      var yAxis = d3.svg.axis()
-          .scale(yScale)
-          .orient("left");
-          //instead of body create svg on the element 
-          //http://jsfiddle.net/2snbk/
-      var svg = d3.select(element[0]).append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var lineMode = options.lineMode;
 
-      var line = d3.svg.line()
-          .x(function (d) {
-          return xScale(d.xVal);
-      })
-          .y(function (d) {
-          return yScale(d.yVal);
-      });
+      if (dataPerSeries.length > 0) {
+        n3utils.setScalesDomain(axes, data, options.series, svg);
 
-      svg.append("path")
-          .datum(productionData)
-          .attr("class", "line productionLine")
-          .attr("d", line)
-          .attr("fill", "none").attr("stroke", "steelblue").attr("stroke-width", "1.5");;
+        var columnWidth = n3utils.getBestColumnWidth(dimensions, dataPerSeries);
 
-      svg.append("path")
-          .datum(consumptionData)
-          .attr("class", "line consumptionLine")
-          .attr("d", line)
-          .attr("fill", "none").attr("stroke", "red").attr("stroke-width", "1.5");
+        n3utils
+          .drawArea(svg, axes, dataPerSeries, lineMode)
+          .drawColumns(svg, axes, dataPerSeries, columnWidth)
+          .drawLines(svg, axes, dataPerSeries, lineMode)
+          .drawDots(svg, axes, dataPerSeries)
+        ;
 
-      var points = svg.selectAll("circle")
-          .data(pointData)
-          .enter()
-          .append("g");
+        n3utils.activateZoom(element[0], svg, axes, dimensions, columnWidth);
+      }
+    };
 
-      points.append("svg:circle")
-          .attr("fill", function (d, i) {
-          return d.color
-      })
-          .attr("cx", function (d, i) {
-          return xScale(d.xVal);
-      })
-          .attr("cy", function (d) {
-          return yScale(d.yVal);
-      })
-          .attr("r", 3);
+    var timeoutPromise;
+    var window_resize = function(e) {
+      $timeout.cancel(timeoutPromise);
+      timeoutPromise = $timeout(scope.update, 1);
+    };
 
-      points.append("text")
-          .attr("x", function (d) {
-          return xScale(d.xVal) + 6
-      })
-          .attr("y", function (d) {
-          return yScale(d.yVal) - 6
-      })
-          .text(function (d) {
-          return "(" + d.xVal + " , " + d.yVal + ")"
-      });
+    $window.addEventListener('resize', window_resize);
 
-      svg.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(xAxis);
-
-      svg.append("g")
-          .attr("class", "y axis")
-          .call(yAxis)
-          .append("text")
-          .attr("transform", "rotate(-90)")
-          .attr("y", -50)
-          .attr("x", -80)
-          .attr("dy", ".71em")
-          .style("text-anchor", "end")
-          .text("Fish (cals)");
-
-      svg.append("g")
-          .attr("class", "x axis")
-          .call(yAxis)
-          .append("text")
-          .attr("x", 200)
-          .attr("y", 230)
-          .attr("dx", ".71em")
-          .style("text-anchor", "end")
-          .text("Wood (cals)");
+    scope.$watch('data', scope.update, true);
+    scope.$watch('options', scope.update, true);
   };
 
   return {
@@ -1021,7 +946,4 @@ angular.module('n3-charts.linechart', [])
     template: '<div></div>',
     link: link
   };
-
-
-
 }]);
