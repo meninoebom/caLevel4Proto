@@ -63,7 +63,7 @@ angular.module('econv4protoApp')
 		},
 		consumption: {
 			line: [[19.2, 3600],[48,0]],
-			point: [38, 1875],
+			point: [33, 1875],
 			color: '#CF2917'
 		},
 	    minMaxX: [0, 50],

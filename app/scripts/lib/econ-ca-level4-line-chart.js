@@ -874,86 +874,30 @@ angular.module('n3-charts.linechart', [])
 
 .directive('linechart', ['n3utils', '$window', '$timeout', function(n3utils, $window, $timeout) {
   var link  = function(scope, element, attrs, ctrl) {
-
-        var productionDataArray;
-        var consumptionDataArray;
-        var productionData;
-        var consumptionData;
-        var pointData;
-        var minMaxY;
-        var minMaxX;
-
-        var data = {};
-
-      scope.update = function() {
-        data = scope.data;
-        // productionDataArray = [
-        //     [0, 2400],
-        //     [33, 750],
-        //     [48, 0]
-        // ];
-        productionDataArray = data.production.line;
-        consumptionDataArray = data.consumption.line;
-        // consumptionDataArray = [
-        //     [19.2, 3600],
-        //     [33, 1875],
-        //     [48, 0]
-        // ];
-
-        productionData = productionDataArray.map(function (d) {
-            return {
-                xVal: d[0],
-                yVal: d[1]
-            };
-        });
-
-        consumptionData = consumptionDataArray.map(function (d) {
-            return {
-                xVal: d[0],
-                yVal: d[1]
-            };
-        });
-
-        pointData = [{
-            xVal: 48,
-            yVal: 0,
-            color: "blue"
-        }, {
-            xVal: 33,
-            yVal: 1875,
-            color: "red"
-        }];
-
-        minMaxY = [0, 4000];
-        minMaxX = [0, 50];
-      }
-
-      scope.update();
-      //var data = n3utils.formatData(scope.data);
-
-      // var margin = {
-      //     top: 20,
-      //     right: 20,
-      //     bottom: 30,
-      //     left: 50
-      // },
-      // width = 290 - margin.left - margin.right,
-      // height = 250 - margin.top - margin.bottom;
-
-      var margin = {top: 20, right: 20, bottom: 30, left: 50},width = element[0].parentElement.offsetWidth || 290,height = element[0].parentElement.offsetHeight || 250;
-      width = width - margin.left - margin.right;
-      height = height - margin.top - margin.bottom;
-
-      scope.redraw = function() {
-
-      }
-
+    
+    var data = scope.data,
+    minMaxX = data.minMaxX,
+    minMaxY = data.minMaxY,
+    productionColor = data.production.color,
+    consumptionColor = data.consumption.color;
+ 
+    scope.redraw = function(data) {
+      var margin = {top: 20, right: 20, bottom: 30, left: 50},
+      rawWidth = element[0].parentElement.offsetWidth || 290,
+      rawHeight = element[0].parentElement.offsetHeight || 250,
+      width = rawWidth - margin.left - margin.right,
+      height = rawHeight - margin.top - margin.bottom,
+      productionGraphLine = scope.formatLineData(data.production.line),
+      consumptionGraphLine = scope.formatLineData(data.consumption.line),
+      pointData = scope.formatPointData(data);
 
       var xScale = d3.scale.linear()
-          .range([0, width]).domain(minMaxX);
+          .range([0, width])
+          .domain(minMaxX);
 
       var yScale = d3.scale.linear()
-          .range([height, 0]).domain(minMaxY);
+          .range([height, 0])
+          .domain(minMaxY);
 
       var xAxis = d3.svg.axis()
           .scale(xScale)
@@ -980,16 +924,16 @@ angular.module('n3-charts.linechart', [])
       });
 
       svg.append("path")
-          .datum(productionData)
+          .datum(productionGraphLine)
           .attr("class", "line productionLine")
           .attr("d", line)
-          .attr("fill", "none").attr("stroke", "steelblue").attr("stroke-width", "1.5");;
+          .attr("fill", "none").attr("stroke", productionColor).attr("stroke-width", "1.5");;
 
       svg.append("path")
-          .datum(consumptionData)
+          .datum(consumptionGraphLine)
           .attr("class", "line consumptionLine")
           .attr("d", line)
-          .attr("fill", "none").attr("stroke", "red").attr("stroke-width", "1.5");
+          .attr("fill", "none").attr("stroke", consumptionColor).attr("stroke-width", "1.5");
 
       var points = svg.selectAll("circle")
           .data(pointData)
@@ -1044,7 +988,33 @@ angular.module('n3-charts.linechart', [])
           .attr("dx", ".71em")
           .style("text-anchor", "end")
           .text("Wood (cals)");
-    scope.$watch('data', scope.update, true);
+    }
+
+    scope.formatLineData = function(pointsArray) {
+      var pointObj = pointsArray.map(function (d) {
+        return {
+            xVal: d[0],
+            yVal: d[1]
+        };
+      });
+      return pointObj;
+    }
+
+    scope.formatPointData = function(data) {
+      var pointData = [{
+          xVal: data.production.point[0],
+          yVal: data.production.point[1],
+          color: productionColor
+      }, {
+          xVal: data.consumption.point[0],
+          yVal: data.consumption.point[1],
+          color: consumptionColor
+      }];
+      return pointData;
+    }
+
+    scope.redraw(data);
+    scope.$watch('data', scope.redraw, true);
   };
 
   return {
