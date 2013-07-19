@@ -57,26 +57,27 @@ angular.module('econv4protoApp')
 
 	$scope.studentGraphData = {
 		production: {
-			line: [[0, 2400][48,0]],
+			line: [[0, 2400],[48,0]],
 			point: [48, 0],
 			color: '#3bbfce'
 		},
 		consumption: {
-			line: [[19.2, 3600][48,0]],
+			line: [[19.2, 3600],[48,0]],
 			point: [38, 1875],
 			color: '#CF2917'
 		},
 	    minMaxX: [0, 50],
    		minMaxY: [0, 4000]
     }; 
+
 	$scope.fridayGraphData = {
 		production: {
-			line: [[0, 3600][36,0]],
+			line: [[0, 3600],[36,0]],
 			point: [0, 3600],
 			color: '#3bbfce'
 		},
 		consumption: {
-			line: [[0, 3600][28.8,0]],
+			line: [[0, 3600],[28.8,0]],
 			point: [15, 1775],
 			color: '#CF2917'
 		},

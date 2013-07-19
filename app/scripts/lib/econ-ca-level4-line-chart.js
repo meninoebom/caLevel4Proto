@@ -883,18 +883,22 @@ angular.module('n3-charts.linechart', [])
         var minMaxY;
         var minMaxX;
 
-      scope.setupData = function(blah) {
-        console.log("blah = "+blah);
-        productionDataArray = [
-            [0, 2400],
-            [33, 750],
-            [48, 0]
-        ];
-        consumptionDataArray = [
-            [19.2, 3600],
-            [33, 1875],
-            [48, 0]
-        ];
+        var data = {};
+
+      scope.update = function() {
+        data = scope.data;
+        // productionDataArray = [
+        //     [0, 2400],
+        //     [33, 750],
+        //     [48, 0]
+        // ];
+        productionDataArray = data.production.line;
+        consumptionDataArray = data.consumption.line;
+        // consumptionDataArray = [
+        //     [19.2, 3600],
+        //     [33, 1875],
+        //     [48, 0]
+        // ];
 
         productionData = productionDataArray.map(function (d) {
             return {
@@ -924,8 +928,8 @@ angular.module('n3-charts.linechart', [])
         minMaxX = [0, 50];
       }
 
-      scope.setupData(scope.data);
-      var data = n3utils.formatData(scope.data);
+      scope.update();
+      //var data = n3utils.formatData(scope.data);
 
       // var margin = {
       //     top: 20,
@@ -1040,6 +1044,7 @@ angular.module('n3-charts.linechart', [])
           .attr("dx", ".71em")
           .style("text-anchor", "end")
           .text("Wood (cals)");
+    scope.$watch('data', scope.update, true);
   };
 
   return {
