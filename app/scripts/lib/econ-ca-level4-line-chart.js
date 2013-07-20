@@ -882,6 +882,7 @@ angular.module('n3-charts.linechart', [])
     consumptionColor = data.consumption.color;
  
     scope.redraw = function(data) {
+      console.log("redraw");
       var margin = {top: 20, right: 20, bottom: 30, left: 50},
       rawWidth = element[0].parentElement.offsetWidth || 290,
       rawHeight = element[0].parentElement.offsetHeight || 250,
@@ -890,6 +891,8 @@ angular.module('n3-charts.linechart', [])
       productionGraphLine = scope.formatLineData(data.production.line),
       consumptionGraphLine = scope.formatLineData(data.consumption.line),
       pointData = scope.formatPointData(data);
+
+      n3utils.clean(element[0]);
 
       var xScale = d3.scale.linear()
           .range([0, width])
@@ -1012,8 +1015,6 @@ angular.module('n3-charts.linechart', [])
       }];
       return pointData;
     }
-
-    scope.redraw(data);
     scope.$watch('data', scope.redraw, true);
   };
 
@@ -1024,7 +1025,5 @@ angular.module('n3-charts.linechart', [])
     template: '<div></div>',
     link: link
   };
-
-
 
 }]);

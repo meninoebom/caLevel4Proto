@@ -172,33 +172,6 @@ body {
 .graph-you {
     margin-right: 20px;
 }
-.yaxis-label {
-    display: block;
-    position: absolute;
-    left: -30px;
-    top: 50%;
-}
-.xaxis-label {
-    display: block;
-    width: 100%;
-    text-align: center;
-    height: 30px;
-    background: #fff;
-    position: relative;
-    top: -30px;
-}
-.rotate-90 {
-    /* Safari */
-    -webkit-transform: rotate(-90deg);
-    /* Firefox */
-    -moz-transform: rotate(-90deg);
-    /* IE */
-    -ms-transform: rotate(-90deg);
-    /* Opera */
-    -o-transform: rotate(-90deg);
-    /* Internet Explorer */
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
 .dialouge {
     width: 560px;
     height: 273px;
