@@ -86,9 +86,9 @@ angular.module('econv4protoApp')
 		$scope.maxStudentConsumptionFish = $scope.formatValue($scope.barterPriceFish*$scope.maxStudentTradeWood);
 	}
 	$scope.setStudentConsumptionWood = function() {
-		$scope.studentConsumptionWood = $scope.formatValue($scope.maxStudentConsumptionWood - $scope.woodTradedToFriday);
+		$scope.studentConsumptionWood = $scope.maxStudentConsumptionWood - $scope.woodTradedToFriday;
 	}
-	$scope.setWoodTradedToFriday = function() {
+	$scope.setWoodTradedToFriday = function () {
 		$scope.woodTradedToFriday = $scope.formatValue($scope.maxStudentConsumptionWood - $scope.studentConsumptionWood);
 	}
 	$scope.updateGraphs = function() {
@@ -128,8 +128,8 @@ angular.module('econv4protoApp')
 		$scope.updateGraphs();
 	});
 
-	$scope.$watch('studentConsumptionFish', function() {
-		$scope.setWoodTradedToFriday();
+	$scope.$watch('studentConsumptionFish', function(newStudentConsumptionFish) {
+		$scope.woodTradedToFriday = $scope.formatValue(newStudentConsumptionFish/$scope.barterPriceFish);
 		$scope.updateGraphs();
 	});
 
