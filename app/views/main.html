@@ -10,7 +10,6 @@
 		<h3>Barter Price</h3>
 		<p class="question">What are the rules for trading?<p>
 
-			<p>Barter price =  {{barterPrice}} (for testing)</p>
 
 		<div class="barter-wood">
 			<span class="barter-wood-lbs barter-amount">{{barterPriceWood}}</span>
@@ -18,7 +17,7 @@
 		</div>
 		<div class="barter-for">for</div>
 		<div class="barter-fish">
-			<input class="barter-fish-lbs barter-amount" type="number" ng-pattern="/\d+/" step="1" min="1" max="3600" ng-model="barterPriceFish" required >
+			<input class="barter-fish-lbs barter-amount" type="number" ng-pattern="/\d+/" step="1" min="1" max="125" ng-model="barterPriceFish" required >
 			<span class="barter-fish-text">Fish (cals)</span>
 		</div>
 	</div>

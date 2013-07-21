@@ -1,5 +1,8 @@
 'use strict';
 
+////////////////////////////TODO/////////
+///figure out how to the get the maximum student consumption of fish
+
 angular.module('econv4protoApp')
   .controller('MainCtrl', function ($scope) {
 
@@ -10,7 +13,6 @@ angular.module('econv4protoApp')
     
     $scope.barterPriceWood = 1;
     $scope.barterPriceFish = 125;     
-    $scope.barterPrice = $scope.barterPriceWood/$scope.barterPriceFish; //bp
 
     $scope.minStudentTradeWood = 0; //minstw
     $scope.maxStudentTradeWood = 28.8; //maxstw
@@ -55,12 +57,10 @@ angular.module('econv4protoApp')
 	    minMaxX: [0, 50],
    		minMaxY: [0, 4000]
     }; 
-    $scope.setBarterPrice = function() {
-		$scope.barterPrice = $scope.barterPriceWood/$scope.barterPriceFish;
-    }
+
 	$scope.setMaxStudentTradeWood = function() {
-		if(3600/$scope.barterPriceFish >= 28.8 ){
-			$scope.maxStudentTradeWood = 28.8;
+		if(3600/$scope.barterPriceFish >= 48 ){
+			$scope.maxStudentTradeWood = 48;
 		} else {
 			$scope.maxStudentTradeWood = $scope.formatValue(3600/$scope.barterPriceFish);
 		} 
@@ -80,7 +80,8 @@ angular.module('econv4protoApp')
 		}
 	}
 	$scope.setMaxStudentConsumptionFish = function() {
-		$scope.maxStudentConsumptionFish = $scope.formatValue($scope.barterPriceFish*$scope.maxStudentTradeWood);
+		//why must this change
+		$scope.maxStudentConsumptionFish = $scope.formatValue($scope.barterPriceFish * $scope.maxStudentTradeWood);
 	}
 	$scope.setStudentConsumptionWood = function() {
 		$scope.studentConsumptionWood = $scope.maxStudentConsumptionWood - $scope.woodTradedToFriday;
@@ -93,22 +94,22 @@ angular.module('econv4protoApp')
 		$scope.updateFridayGraph();
 	}
 	$scope.updateStudentGraph = function() {
+		console.log("$scope.maxStudentConsumptionFish = "+$scope.maxStudentConsumptionFish);
 		console.log("$scope.maxStudentTradeWood = "+$scope.maxStudentTradeWood);
 		console.log("$scope.barterPriceFish = "+$scope.barterPriceFish);
 		console.log("$scope.studentGraphData.consumption.line[0][1] = "+$scope.studentGraphData.consumption.line[0][1]);
-		$scope.studentGraphData.consumption.line[0][1] = $scope.maxStudentTradeWood * $scope.barterPriceFish;
+		$scope.studentGraphData.consumption.line[0][1] = $scope.formatValue($scope.maxStudentTradeWood * $scope.barterPriceFish);
 		$scope.studentGraphData.consumption.point[0] = $scope.studentConsumptionWood;
 		$scope.studentGraphData.consumption.point[1] = $scope.studentConsumptionFish;
 	}
 	$scope.updateFridayGraph = function() {
 		var barterPrice = $scope.barterPriceFish;
-		$scope.fridayGraphData.consumption.line[1][0] = $scope.maxStudentConsumptionFish/$scope.barterPriceFish;
+		$scope.fridayGraphData.consumption.line[1][0] = $scope.formatValue($scope.maxStudentConsumptionFish/$scope.barterPriceFish);
 		$scope.fridayGraphData.consumption.point[0] = $scope.woodTradedToFriday;
 		$scope.fridayGraphData.consumption.point[1] = 3600 - $scope.studentConsumptionFish;	
 	}
 
 	$scope.$watch('barterPriceFish', function() {
-		$scope.setBarterPrice();
 		$scope.setMaxStudentTradeWood();
 		$scope.setMinStudentConsumptionWood();
 		$scope.setStudentConsumptionFish();
