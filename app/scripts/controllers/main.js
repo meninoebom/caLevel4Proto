@@ -88,7 +88,7 @@ angular.module('econv4protoApp')
 		}
 	}
 	$scope.setStudentConsumptionWood = function() {
-		$scope.studentConsumptionWood = $scope.maxStudentConsumptionWood - $scope.woodTradedToFriday;
+		$scope.studentConsumptionWood = $scope.formatValue($scope.maxStudentConsumptionWood - $scope.woodTradedToFriday);
 	}
 	$scope.setWoodTradedToFriday = function () {
 		$scope.woodTradedToFriday = $scope.formatValue($scope.maxStudentConsumptionWood - $scope.studentConsumptionWood);

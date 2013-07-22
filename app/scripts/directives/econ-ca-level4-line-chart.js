@@ -913,7 +913,8 @@ angular.module('n3-charts.linechart', [])
           //instead of body create svg on the element 
           //http://jsfiddle.net/2snbk/
       var svg = d3.select(element[0]).append("svg")
-          .attr("width", width + margin.left + margin.right)
+          //added 50 to width so we can see the consumption point lables
+          .attr("width", width + margin.left + margin.right + 50)
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -986,8 +987,8 @@ angular.module('n3-charts.linechart', [])
           .attr("class", "x axis")
           .call(yAxis)
           .append("text")
-          .attr("x", 200)
-          .attr("y", 230)
+          .attr("x", 130)
+          .attr("y", 280)
           .attr("dx", ".71em")
           .style("text-anchor", "end")
           .text("Wood (cals)");

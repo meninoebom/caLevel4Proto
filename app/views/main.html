@@ -17,7 +17,7 @@
 		</div>
 		<div class="barter-for">for</div>
 		<div class="barter-fish">
-			<input class="barter-fish-lbs barter-amount" type="number" ng-pattern="/\d+/" step="1" min="1" max="125" ng-model="barterPriceFish" required >
+			<input class="barter-fish-lbs barter-amount" type="number" ng-pattern="/\d+/" step="1" min="1" max="3600" ng-model="barterPriceFish" required >
 			<span class="barter-fish-text">Fish (cals)</span>
 		</div>
 	</div>
@@ -85,12 +85,8 @@
 		<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 		<h4 class="speaker-label">You</h4>
 		<p>That doesn't seem very fair to me. What about this?</p>
-		<p>I agree to give you <span class="barter-amount" ng-model="barterPriceWood">1</span>lb of wood for every <span class="barter-amount" ng-model="barterPriceFish">{{barterPriceFish}}</span> calories of fish you give me.</p>
-		<p>At the end of the day.  I'll give you <span class="trade-amount" ng-model="tradeWoodToFriday">{{woodTradedToFriday}}</span>lbs of wood, leaving me <span class="consumption-amount">{{studentConsumptionWood}}</span>lbs and you'll give me <span class="consumption-amount" >{{studentConsumptionFish}}</span> calories of fish, leaving you with <span ng-model="tradeFishLeftOverForFriday">{{fishTradedToFriday}}</span> calories.</p>
-		<h4 class="speaker-label">Friday</h4>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-		<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-		<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		<p>I agree to give you <span class="barter-amount" ng-model="barterPriceWood">1</span> lb of wood for every <span class="barter-amount" ng-model="barterPriceFish">{{barterPriceFish}}</span> calories of fish you give me.</p>
+		<p>At the end of the day.  I'll give you <span class="trade-amount" ng-model="tradeWoodToFriday">{{woodTradedToFriday}}</span> lbs of wood, leaving me <span class="consumption-amount">{{studentConsumptionWood}}</span> lbs and you'll give me <span class="consumption-amount" >{{studentConsumptionFish}}</span> calories of fish, leaving you with <span ng-model="tradeFishLeftOverForFriday">{{fishTradedToFriday}}</span> calories.</p>
 	</div>
 
 </div>
