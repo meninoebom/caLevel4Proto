@@ -116,7 +116,11 @@ angular.module('econv4protoApp')
 	}
 	$scope.updateFridayGraph = function() {
 		var barterPrice = $scope.barterPriceFish;
-		$scope.fridayGraphData.consumption.line[1][0] = $scope.formatValue($scope.maxStudentConsumptionFish/$scope.barterPriceFish);
+		//max how much wood friday can consume
+		//$scope.fridayGraphData.consumption.line[1][0] = $scope.formatValue($scope.maxStudentConsumptionFish/$scope.barterPriceFish);
+		$scope.fridayGraphData.consumption.line[1][0] = $scope.maxStudentTradeWood;
+		$scope.fridayGraphData.consumption.line[1][1] = 3600 - $scope.maxStudentConsumptionFish;
+
 		//wood Friday gets from the student
 		$scope.fridayGraphData.consumption.point[0] = $scope.woodTradedToFriday;
 		//fish Friday has leftover after trading
